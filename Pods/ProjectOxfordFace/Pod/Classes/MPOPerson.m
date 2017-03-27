@@ -38,7 +38,9 @@
         self.personId = dict[@"personId"];
         self.faceIds = dict[@"faceIds"];
         self.name = dict[@"name"];
-        self.userData = dict[@"userData"];
+        if ([dict[@"userData"] isKindOfClass:[NSString class]]) {
+            self.userData = dict[@"userData"];
+        }
     }
     return self;
 }
