@@ -32,6 +32,9 @@
 		609830EC1E6AEF6E009DBE63 /* FaceOperator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 609830EB1E6AEF6E009DBE63 /* FaceOperator.swift */; };
 		609830EE1E6B0BBD009DBE63 /* RecognizedUserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 609830ED1E6B0BBD009DBE63 /* RecognizedUserModel.swift */; };
 		609830F01E6B0C04009DBE63 /* RecognizedFaceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 609830EF1E6B0C04009DBE63 /* RecognizedFaceModel.swift */; };
+		60EE919A1E89C2DC00C92DDB /* ThemeColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60EE91991E89C2DC00C92DDB /* ThemeColors.swift */; };
+		60EE919D1E89C60700C92DDB /* ImageHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60EE919C1E89C60700C92DDB /* ImageHelper.swift */; };
+		60EE91A01E89CF6000C92DDB /* IdentifyFacesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60EE919F1E89CF6000C92DDB /* IdentifyFacesViewController.swift */; };
 		AC3031F08715BF1889F53766 /* Pods_What_I_See.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA0ECA732CDC4EE2DF209A3A /* Pods_What_I_See.framework */; };
 /* End PBXBuildFile section */
 
@@ -67,6 +70,9 @@
 		609830EB1E6AEF6E009DBE63 /* FaceOperator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FaceOperator.swift; sourceTree = "<group>"; };
 		609830ED1E6B0BBD009DBE63 /* RecognizedUserModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecognizedUserModel.swift; sourceTree = "<group>"; };
 		609830EF1E6B0C04009DBE63 /* RecognizedFaceModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecognizedFaceModel.swift; sourceTree = "<group>"; };
+		60EE91991E89C2DC00C92DDB /* ThemeColors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThemeColors.swift; sourceTree = "<group>"; };
+		60EE919C1E89C60700C92DDB /* ImageHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageHelper.swift; sourceTree = "<group>"; };
+		60EE919F1E89CF6000C92DDB /* IdentifyFacesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IdentifyFacesViewController.swift; sourceTree = "<group>"; };
 		B87562D20BFE34A69DED9661 /* Pods-What I See.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-What I See.release.xcconfig"; path = "Pods/Target Support Files/Pods-What I See/Pods-What I See.release.xcconfig"; sourceTree = "<group>"; };
 		EA0ECA732CDC4EE2DF209A3A /* Pods_What_I_See.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_What_I_See.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -130,7 +136,8 @@
 		60186F401E58614A00C73BB6 /* Core */ = {
 			isa = PBXGroup;
 			children = (
-				609830E81E6AC0B6009DBE63 /* configuration */,
+				609830E81E6AC0B6009DBE63 /* Configuration */,
+				60EE919B1E89C5E000C92DDB /* Helper */,
 				609830E51E6AC061009DBE63 /* Manager */,
 				60186F491E58639D00C73BB6 /* Models */,
 				60186F481E58638900C73BB6 /* Operaters */,
@@ -201,6 +208,7 @@
 		603F21D11E89651700082BB5 /* Recognized Users */ = {
 			isa = PBXGroup;
 			children = (
+				60EE919E1E89CF4400C92DDB /* Identify Faces */,
 				603F21D21E89653200082BB5 /* Recognized Users */,
 			);
 			name = "Recognized Users";
@@ -231,12 +239,29 @@
 			name = Manager;
 			sourceTree = "<group>";
 		};
-		609830E81E6AC0B6009DBE63 /* configuration */ = {
+		609830E81E6AC0B6009DBE63 /* Configuration */ = {
 			isa = PBXGroup;
 			children = (
+				60EE91991E89C2DC00C92DDB /* ThemeColors.swift */,
 				609830E91E6AC0DF009DBE63 /* APIsConfiguration.swift */,
 			);
-			name = configuration;
+			name = Configuration;
+			sourceTree = "<group>";
+		};
+		60EE919B1E89C5E000C92DDB /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				60EE919C1E89C60700C92DDB /* ImageHelper.swift */,
+			);
+			name = Helper;
+			sourceTree = "<group>";
+		};
+		60EE919E1E89CF4400C92DDB /* Identify Faces */ = {
+			isa = PBXGroup;
+			children = (
+				60EE919F1E89CF6000C92DDB /* IdentifyFacesViewController.swift */,
+			);
+			name = "Identify Faces";
 			sourceTree = "<group>";
 		};
 		C5AD422CBD4614B216120F88 /* Pods */ = {
@@ -395,14 +420,17 @@
 				603F21CB1E873E4300082BB5 /* DBFace+CoreDataProperties.swift in Sources */,
 				603F21D01E8963EB00082BB5 /* RecognizedUsersViewController.swift in Sources */,
 				609830EE1E6B0BBD009DBE63 /* RecognizedUserModel.swift in Sources */,
+				60EE91A01E89CF6000C92DDB /* IdentifyFacesViewController.swift in Sources */,
 				603F21D51E89658400082BB5 /* RecognizedUserTableViewCell.swift in Sources */,
 				600FFBF11E7DEB4A00D3E96D /* CoreDataController.swift in Sources */,
 				60186F311E58613D00C73BB6 /* ViewController.swift in Sources */,
+				60EE919D1E89C60700C92DDB /* ImageHelper.swift in Sources */,
 				609830EC1E6AEF6E009DBE63 /* FaceOperator.swift in Sources */,
 				60186F4B1E5863B400C73BB6 /* UserModel.swift in Sources */,
 				600FFBEF1E7DE78E00D3E96D /* DataModel.xcdatamodeld in Sources */,
 				603F21CA1E873E4300082BB5 /* DBFace+CoreDataClass.swift in Sources */,
 				603F67711E869E2900EEDB0F /* HTTPMethod.swift in Sources */,
+				60EE919A1E89C2DC00C92DDB /* ThemeColors.swift in Sources */,
 				60186F2F1E58613D00C73BB6 /* AppDelegate.swift in Sources */,
 				609830EA1E6AC0DF009DBE63 /* APIsConfiguration.swift in Sources */,
 			);

@@ -58,6 +58,10 @@ class RecognizedUsersViewController: UIViewController, UITableViewDataSource, UI
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         searchBar.resignFirstResponder()
     }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.resignFirstResponder()
+    }
 
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
@@ -92,7 +96,13 @@ class RecognizedUsersViewController: UIViewController, UITableViewDataSource, UI
     }
 
     @IBAction func editTableView(_ sender: Any) {
-        tableView.setEditing(!tableView.isEditing, animated: true)
+        if tableView.isEditing {
+            navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: #selector(editTableView))
+            tableView.setEditing(false, animated: true)
+        } else {
+            navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(editTableView))
+            tableView.setEditing(true, animated: true)
+        }
     }
     
     @IBAction func addRecognizedUser(_ sender: Any) {
@@ -100,7 +110,7 @@ class RecognizedUsersViewController: UIViewController, UITableViewDataSource, UI
         
         let photoGallaryAction = UIAlertAction(title: "Photo Gallary", style: .default) { (alertAction) in
             let imagePicker = UIImagePickerController()
-            imagePicker.sourceType = .savedPhotosAlbum
+            imagePicker.sourceType = .photoLibrary
             imagePicker.mediaTypes = [kUTTypeImage as String]
             imagePicker.delegate = self
             self.present(imagePicker, animated: true, completion: nil)

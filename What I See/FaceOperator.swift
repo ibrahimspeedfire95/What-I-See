@@ -112,5 +112,17 @@ class FaceOperator {
             }
         })
     }
+    
+    class func getIdentifiedFaces(image: UIImage, success: @escaping (UIImage) -> (), failure: @escaping (Error?) -> ()) {
+        let recognizedUsers = CoreDataController.sharedController.getRecognizedUsers()
+        var faceIds = [String]()
+        for recognizedUser in recognizedUsers! {
+            faceIds.append(recognizedUser.id)
+        }
+        _ = client?.identify(withPersonGroupId: "2", faceIds: faceIds, maxNumberOfCandidates: 5, completionBlock: { (identifyResult, error) in
+            
+        })
+    }
 
+    
 }

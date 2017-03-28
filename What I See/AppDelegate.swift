@@ -9,6 +9,7 @@
 import UIKit
 import CoreData
 import AVFoundation
+import MediaPlayer
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -23,9 +24,43 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //        let rus = RecognizedUser.getRecognizedUsers()
 //        print(rus)
 //                
+        listenVolumeButton()
         return true
     }
+
+    func listenVolumeButton() {
+        let audioSession = AVAudioSession.sharedInstance()
+        do {
+            try audioSession.setActive(true)
+        } catch {
+            print("some error")
+        }
+        audioSession.addObserver(self, forKeyPath: "outputVolume", options: NSKeyValueObservingOptions.new, context: nil)
+        
+        self.window?.insertSubview(MPVolumeView(), at: 0)
+    }
     
+    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
+        if keyPath == "outputVolume" {
+            print("got in here")
+            
+            let storyBoard = UIStoryboard(name: "Main", bundle: Bundle.main)
+            let identifyFacesvc = storyBoard.instantiateViewController(withIdentifier: "IdentifyFacesViewController")
+            
+            var vc = window?.rootViewController
+            while vc?.presentedViewController != nil{
+                vc = vc?.presentedViewController
+            }
+            
+            if !(vc is IdentifyFacesViewController) {
+                vc?.present(identifyFacesvc, animated: true, completion: nil)
+            } else {
+                NotificationCenter.default.post(name: NSNotification.Name(rawValue: "TakePicture"), object: nil)
+            }
+            
+        }
+    }
+
     func applicationWillResignActive(_ application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
         // Use this method to pause ongoing tasks, disable timers, and invalidate graphics rendering callbacks. Games should use this method to pause the game.
